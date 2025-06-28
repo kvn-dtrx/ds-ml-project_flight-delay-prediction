@@ -1,6 +1,7 @@
 [submodule "archive/template"]
 	path = archive/template
-	url = https://github.com/neuefische/ds-ml-project-template
-[submodule "docs/presentation/vendor/reveal.js"]
-	path = docs/presentation/vendor/reveal.js
-	url = https://github.com/hakimel/reveal.js.git
+	url = git@github.com:neuefische/ds-ml-project-template.git
+[submodule "docs/presentation/vendor/my-reveal-js"]
+	path = docs/presentation/vendor/my-reveal-js
+	url = git@github.com:kvn-dtrx/my-reveal-js.git
+	

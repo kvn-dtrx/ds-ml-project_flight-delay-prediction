@@ -68,6 +68,6 @@ The organisation of the repository follows common conventions and therefore requ
 
 **Authors:** [MoSeBaur](https://github.com/MoSeBaur), [greseberisha](https://github.com/greseberisha), [kvn-dtrx](https://github.com/kvn-dtrx)
 
-**Template:** This repository was created from the [Neue Fische DS/ML Project Template](https://github.com/neuefische/ds-ml-project-template).
+**Template:** This repository was instantiated from the [Neue Fische DS/ML Project Template](https://github.com/neuefische/ds-ml-project-template).
 
 **License:** [MIT License](license.txt)
