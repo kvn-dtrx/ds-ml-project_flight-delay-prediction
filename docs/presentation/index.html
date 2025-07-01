@@ -1,214 +1,293 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>DS/ML Project: Flight Prediction Challenge</title>
-  <meta name="author" content="Gresë Berisha, Moritz Baur, Kevin Dietrich">
-  <meta name="date" content="2025-03-17" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet" href="vendor/reveal.js/dist/reveal.css" />
-  <link rel="stylesheet" href="vendor/reveal.js/dist/theme/black.css" />
-  <script src="vendor/reveal.js/dist/reveal.js"></script>
-</head>
-<body>
-  <div class="reveal">
-    <div class="slides">
-      <!-- 1 -->
-      <section style="text-align: center;">
-        <!-- <h1>DS/ML Project: Flight Delay Prediction for Tunisair</h1> -->
-        <img src="images/front-cover.png" alt="Front Cover" style="max-width: 400px; width: 80%; margin: 20px auto;" />
-        <p>
-          <strong>Gresë Berisha</strong><br/>
-          <strong>Moritz Baur</strong><br/>
-          <strong>Kevin Dietrich</strong><br/>
-        </p>
-      </section>
+  <head>
+    <meta charset="utf-8" />
+    <title>DS/ML Project: Flight Prediction Challenge</title>
+    <meta name="author" content="Gresë Berisha, Moritz Baur, Kevin Dietrich">
+    <meta name="date" content="2025-04-10" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <!-- 2 -->
-      <section>
-        <h2>Problem and Motivation</h2>
-        
-        <h3>✈ Problem</h3>
-        <ul>
-          <li>Flight delays are disruptive and costly.</li>
-          <li>Passengers lose time ⏱ and confidence.</li>
-          <li>Airlines and airports face financial losses 💼 and reduced operational efficiency.</li>
-        </ul>
-        
-        <h3>📈 Motivation</h3>
-        <ul>
-          <li>Tunisair aims to implement a predictive solution to anticipate delays and mitigate their impact.</li>
-        </ul>
-      </section>
+    <!-- Reveal.js core styles: base CSS for the framework -->
+    <link rel="stylesheet" href="vendor/my-reveal-js/reveal.js/dist/reveal.css" />
+    <!-- Reveal.js theme styles: Black theme -->
+    <link rel="stylesheet" href="vendor/my-reveal-js/reveal.js/dist/theme/black.css" />
+    <!-- Custom styles: overrides and additions to the theme -->
+    <link rel="stylesheet" href="vendor/my-reveal-js/css/black-post.css" />
+    <!-- Reveal.js core script: main JavaScript functionality -->
+    <script src="vendor/my-reveal-js/reveal.js/dist/reveal.js"></script>
 
-      <!-- 3 -->
-      <section>
-        <h2>🎯 Project Objective</h2>
-        
-        <h3>🥅 Goal</h3>
-        <p>Use machine learning to predict the length of flight delays (in minutes).</p>
-        
-        <h3>💥 Impact</h3>
-        <ul>
-          <li>✔ Better scheduling</li>
-          <li>✔ Reduced operational inefficiencies</li>
-          <li>✔ Improved passenger satisfaction</li>
-        </ul>
-      </section>
+  </head>
 
-      <!-- 4 -->
-      <section>
-        <h2>Dataset and Evaluation</h2>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- 1 -->
+        <section style="text-align: center;">
+          <!-- <h1>DS/ML Project: Flight Delay Prediction for Tunisair</h1> -->
+          <div class="image-wrapper">
+            <img src="images/front-cover.png" alt="Front Cover" width="500" height="360" />
+            <!-- <div class="caption"><a href="">©</a>???</div> -->
+          </div>
 
-        <h3>Data Source</h3>
-        <p>📁 Flight data provided by Zindi, consisting of a train/test format for model development</p>
+          <h6 style="font-size: 14px; color: #ff0073">
+            <strong><a href="https://github.com/greseberisha">Gresë Berisha</a></strong><br />
+            <strong><a href="https://github.com/MoSeBaur">Moritz Baur</a></strong><br />
+            <strong><a href="https://github.com/kvn-dtrx">Kevin Dietrich</a></strong><br />
+            <br />2025-03-17
+          </h6>
+        </section>
 
-        <h3>Prediction Target:</h3>
-        <p>🕒 Delay duration in minutes</p>
+        <!-- 2 -->
+        <section>
+          <h2>Problem and Motivation</h2>
+          <div class="headline-block fragment">
+            <h3>✈ Problem</h3>
+            <ul>
+              <li>Flight delays are disruptive and costly.</li>
+              <li>Passengers lose time ⏱ and confidence.</li>
+              <li>Airlines and airports face financial losses 💼 and reduced operational efficiency.</li>
+            </ul>
+          </div>
 
-        <h3>Performance Metric:</h3>
-        <p>📉 Root Mean Square Error (RMSE)</p>
-      </section>
+          <div class="headline-block fragment">
+            <h3>📈 Motivation</h3>
+            <ul>
+              <li>Tunisair aims to implement a predictive solution to anticipate delays and mitigate their impact.</li>
+            </ul>
+          </div>
+        </section>
 
-      <!-- 5 -->
-      <section>
-        <h2>Exploratory Data Analysis (EDA)</h2>
+        <!-- 3 -->
+        <section>
+          <h2>🎯 Project Objective</h2>
 
-        <h3>🔍 Initial Insights from EDA</h3>
-        <p>We analysed how delays are distributed based on:</p>
-        <ul>
-          <li>Departure airports</li>
-          <li>Arrival airports</li>
-          <li>Temporal trends across the years 2016–2018</li>
-        </ul>
-      </section>
+          <div class="headline-block fragment">
+            <h3>🥅 Goal</h3>
+            <p>Use machine learning to predict the length of flight delays (in minutes).</p>
+          </div>
 
-      <!-- 6 -->
-      <section>
-      <h2>Column Description</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Column</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>ID</td><td>Unique flight identifier</td></tr>
-          <tr><td>DATOP</td><td>Date of flight</td></tr>
-          <tr><td>FLTID</td><td>Flight number</td></tr>
-          <tr><td>DEPSTN</td><td>Departure point</td></tr>
-          <tr><td>ARRSTN</td><td>Arrival point</td></tr>
-          <tr><td>STD</td><td>Scheduled time of departure</td></tr>
-          <tr><td>STA</td><td>Scheduled time of arrival</td></tr>
-          <tr><td>STATUS</td><td>Flight status</td></tr>
-          <tr><td>AC</td><td>Aircraft code</td></tr>
-          <tr><td>target</td><td>Flight delay (min)</td></tr>
-        </tbody>
-      </table>
-      </section>
+          <div class="headline-block fragment">
+            <h3>💥 Impact</h3>
+            <ul>
+              <li>✔ Better scheduling</li>
+              <li>✔ Reduced operational inefficiencies</li>
+              <li>✔ Improved passenger satisfaction</li>
+            </ul>
+          </div>
+        </section>
 
-      <!-- 7 -->
-      <!-- Mean Delay per Airport -->
-      <section>
-        <img src="plots/dest-to-avg-delay_hist.png" alt="Mean Delay per Airport" style="max-width: 400px; width: 80%; margin: 20px auto;" />
-      </section>
+        <!-- 4 -->
+        <section>
+          <h2>Dataset and Evaluation</h2>
+
+          <div class="headline-block fragment">
+            <h3>Data Source</h3>
+            <p>📁 Flight data provided by Zindi, consisting of a train/test format for model development</p>
+          </div>
+
+          <div class="headline-block fragment">
+            <h3>Prediction Target:</h3>
+            <p>🕒 Delay duration in minutes</p>
+          </div>
+
+          <div class="headline-block fragment">
+            <h3>Performance Metric:</h3>
+            <p>📉 Root Mean Square Error (RMSE)</p>
+          </div>
+        </section>
+
+        <!-- 5 -->
+        <section>
+          <h2>Exploratory Data Analysis (EDA)</h2>
+          <div class="headline-block fragment">
+            <h3>🔍 Initial Insights from EDA</h3>
+            <p>We analysed how delays are distributed based on:</p>
+            <ul>
+              <li>Departure airports</li>
+              <li>Arrival airports</li>
+              <li>Temporal trends across the years 2016–2018</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 6 -->
+        <section>
+          <h2>Column Description</h2>
+          <table style="font-size: 0.7em;">
+            <thead>
+              <tr>
+                <th>Column</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ID</td>
+                <td>Unique flight identifier</td>
+              </tr>
+              <tr>
+                <td>DATOP</td>
+                <td>Date of flight</td>
+              </tr>
+              <tr>
+                <td>FLTID</td>
+                <td>Flight number</td>
+              </tr>
+              <tr>
+                <td>DEPSTN</td>
+                <td>Departure point</td>
+              </tr>
+              <tr>
+                <td>ARRSTN</td>
+                <td>Arrival point</td>
+              </tr>
+              <tr>
+                <td>STD</td>
+                <td>Scheduled time of departure</td>
+              </tr>
+              <tr>
+                <td>STA</td>
+                <td>Scheduled time of arrival</td>
+              </tr>
+              <tr>
+                <td>STATUS</td>
+                <td>Flight status</td>
+              </tr>
+              <tr>
+                <td>AC</td>
+                <td>Aircraft code</td>
+              </tr>
+              <tr>
+                <td>target</td>
+                <td>Flight delay (min)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 7 -->
+        <section>
+          <h2>Mean Delay per Airport</h2>
+          <h3>by Departure and Arrival</h3>
+          <img src="plots/airport-to-avg-delay_hist.png" alt="Mean Delay per Airport" width="600px" height="400px" />
+        </section>
 
 
-      <!-- 8 -->
-      <section>
-        <h2>Deriving flight time from STD and STA</h2>
-        <h2>Removing Service Flights?</h2>
-        <p style="margin-bottom: 1.5em;">Flights where departure and arrival airports are the same</p>
+        <!-- 8 -->
+        <section>
+          <h2>Deriving flight time from STD and STA</h2>
+          <p style="margin-bottom: 1.5em;" class="fragment">
+            Removing Service Flights, i.e. flights where departure and arrival airports are the same …
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 2em;">
+            <img src="plots/flight-time-to-delay_scatterplot.png" alt="Flight Time to Delay" width="450" class="fragment" />
+            <span style="font-size: 2em;" class="fragment">⇒</span>
+            <img src="plots/flight-time-to-delay_trimmed_scatterplot.png" alt="Flight Time to Delay — After Trimming" width="450" class="fragment" />
+          </div>
+        </section>
+        <!--  -->
 
-        <div style="display: flex; align-items: center; justify-content: center; gap: 2em;">
-          <img src="plots/flight-time-to-delay_scatterplot.png" alt="Flight Time to Delay" width="300" />
-          <span style="font-size: 2em;">⇒</span>
-          <img src="plots/flight-time-to-delay_trimmed_scatterplot.png" alt="Flight Time to Delay — After Trimming" width="300" />
-        </div>
-      </section>
-      <!--  -->
-      
-      <!-- 9 -->
-      <section>
-        <h2>Dissecting DATOP into YEAR, month and day of the week</h2>
+        <!-- 9 -->
+        <style>
+          .grid-image {
+            width: 320px;
+            height: 220px;
+            object-fit: contain;
+          }
+        </style>
+        <section>
+          <h2>Dissecting DATOP into YEAR, month and day of the week</h2>
           <div style="
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1em;
+            gap: 0.0em;
             justify-items: center;
             align-items: center;
           ">
-            <img src="plots/month-to-sum-flight-on-2016_hist.png" alt="Month to Sum of Flights for 2016" style="max-width: 100%; height: auto;" />
-            <img src="plots/month-to-sum-flight-on-2017_hist.png" alt="Month to Sum of Flights for 2017" style="max-width: 100%; height: auto;" />
-            <img src="plots/month-to-sum-flight-on-2018_hist.png" alt="Month to Sum of Flights for 2018" style="max-width: 100%; height: auto;" />
-            <img src="plots/weekday-to-delay-by-year_graph.png" alt="Weekday to Delay by Year" style="max-width: 100%; height: auto;" />
+            <img src="plots/month-to-sum-flight-on-2016_hist.png" alt="Month to Sum of Flights for 2016" class="grid-image" />
+            <img src="plots/month-to-sum-flight-on-2017_hist.png" alt="Month to Sum of Flights for 2017" class="grid-image" />
+            <img src="plots/month-to-sum-flight-on-2018_hist.png" alt="Month to Sum of Flights for 2018" class="grid-image" />
+            <img src="plots/weekday-to-delay-by-year_graph.png" alt="Weekday to Delay by Year" class="grid-image" />
           </div>
-      </section>
-      <!-- Plus four plots -->
-      
-      <!-- 10 -->
-      <section>
-        <h2>Baseline Model</h2>
+        </section>
 
-        <p><strong>Initial Approach:</strong></p>
-        <p>
-          A simple linear regression model using only the day of the week<br />
-          (or aircraft code) as the predictor.
-        </p>
-        <img src="plots/lin-reg_actual-vs-predicted_dist.png" alt="Baseline Model Error" width="300" />
-        <p><strong>Baseline Performance:</strong></p>
-        <ul>
-          <li>📊 RMSE ≈ <strong>114.69</strong></li>
-          <li>🤖 R_2 ≈ <strong>3.01 %</strong></li>
-        </ul>
-      </section>
+        <!-- 10 -->
+        <section>
+          <h2>Baseline Model</h2>
+          <div class="headline-block">
+            <div class="fragment">
+              <h3>Approach</h3>
+              <p>
+                A simple linear regression model using only the day of the week<br />
+                (or aircraft code) as the predictor.
+              </p>
+            </div>
 
-      <!-- 11 -->
-      <section>
-        <h2>ML Model</h2>
-        <p>Many categorical variables ...</p>
-        <p>... but there is:</p>
-        <!-- TODO: Replace image -->
-        <img src="images/catboost.png" alt="CatBoost" style="max-width: 700px; width: 100%;" />
-      </section>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 2em;" class="fragment">
+              <div style="text-align: left;">
+                <h4>Performance</h4>
+                <ul style="list-style: none; padding-left: 1.2em;">
+                  <li style="text-indent: -1.2em;">📊 RMSE ≈ 114.69</li>
+                  <li style="text-indent: -1.2em;">🤖 R_2 ≈ 3.01 %</li>
+                </ul>
+              </div>
+              <img src="plots/lin-reg_actual-vs-predicted_dist.png" alt="Baseline Model Error" width="400px" height="350px" />
+            </div>
+        </section>
 
-      <!-- 12 -->
-      <section>
-        <h2>ML Model</h2>
-        
-        <h3>Approach:</h3>
-        <p>A regression model using the CatBoost method with the predictors:</p>
-        <ul>
-          <li>Flight Status</li>
-          <li>Aircraft Code</li>
-          <li>Departure and Arrival Point</li>
-          <li>Year, month and weekday of Departure Time</li>
-        </ul>
-        
-        <h3>Performance:</h3>
-        <ul>
-          <li>📊 RMSE ≈ 96.14 (&lt; 100)</li>
-          <li>🤖 R_2 ≈ 30.48 %</li>
-        </ul>
-        
-        <img src="plots/catboost_actual-vs-predicted_dist.png" alt="ML Model Error" style="max-width: 700px; width: 100%;" />
-      </section>
+        <!-- 11 -->
+        <section>
+          <h2>ML Model</h2>
+          <p class="fragment">Many categorical variables …</p>
+          <p class="fragment">… but there is:</p>
+          <div class="image-wrapper fragment">
+            <h4>CatBoost</h4>
+            <img src="images/catboost.png" alt="CatBoost" style="max-width: 300px; width: 100%;" />
+            <div class="caption">Machine-generated image—no animals were harmed</a></div>
+          </div>
+        </section>
 
-      <!-- 13 -->
-      <section>
-        <h2>💬 Questions and Feedback</h2>
-        <p>We’re happy to answer any questions and look forward to your feedback.</p>
-      </section>
+        <!-- 12 -->
+        <section>
+          <h2>ML Model</h2>
+
+          <div class="headline-block">
+            <div class="fragment">
+              <h3>Approach</h3>
+              <div style="font-size: 0.8em;">
+                <p>A regression model using CatBoost with the following predictors: <em>Flight Status; Aircraft Code; Departure and Arrival Point; Year, Month and Weekday of Departure Time</em>
+                </p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: center; gap: 2em;" class="fragment">
+              <div style="text-align: left;">
+                <h4>Performance</h4>
+                <ul style="list-style: none; padding-left: 1.2em;">
+                  <li style="text-indent: -1.2em;">📊 RMSE ≈ 96.14 (&lt; 100)</li>
+                  <li style="text-indent: -1.2em;">🤖 R_2 ≈ 30.48 %</li>
+                </ul>
+              </div>
+              <img src="plots/catboost_actual-vs-predicted_dist.png" alt="ML Model Error" width="400px" height="350px" />
+            </div>
+          </div>
+        </section>
+
+        <!-- 13 -->
+        <section>
+          <h2>💬 Questions and Feedback</h2>
+          <p>We're happy to answer your questions and look forward to your feedback.</p>
+        </section>
+      </div>
     </div>
-  </div>
 
-  <script>
-    Reveal.initialize({
-      hash: true,
-      slideNumber: true,
-    });
-  </script>
-</body>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+      });
+    </script>
+  </body>
+
 </html>
