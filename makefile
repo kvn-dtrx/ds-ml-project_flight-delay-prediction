@@ -28,3 +28,5 @@ win:
 	python -m venv $(VENV)
 	.\$(VENV)\Scripts\python.exe -m pip install --upgrade pip
 	.\$(VENV)\Scripts\python.exe -m pip install -e .
+_presentation:
+	monolith --output "docs/presentation.html" "docs/presentation/index.html"

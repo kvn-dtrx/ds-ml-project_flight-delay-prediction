@@ -6,6 +6,7 @@
 import os
 import subprocess
 import matplotlib.pyplot as plt
+import matplotlib.style as mplstyle
 from typing import Any, Dict
 
 # ---
@@ -23,8 +24,9 @@ CFG["RSEED"] = 42
 # CFG["PLT_STYLE"] = "dark_background"
 CFG["PLT_STYLE"] = "seaborn-v0_8-darkgrid"
 
-# "Resolution" for stored plots.
-CFG["DPI"] = 600
+# (Pseudo-)Resolution for stored plots.
+# CFG["DPI"] = 600
+CFG["DPI"] = 300
 
 # Root directory of the project.
 CFG["ROOT_DIR"] = subprocess.run(
@@ -54,12 +56,12 @@ CFG["LOGS_DIR"] = os.path.join(NOTEBOOKS_DIR, "logs")
 
 # Basic matplotlib style settings
 PLT_STYLE = CFG["PLT_STYLE"]
-try:
+if PLT_STYLE in mplstyle.available:
     plt.style.use(PLT_STYLE)
-except:
+else:
     print("Could not load the specified matplotlib style:")
-    print(PLT_STYLE)
-    print("Default style will be used")
+    print(f"  {PLT_STYLE}")
+    print("Default style will be used.")
 
 plt.rcParams["axes.titleweight"] = "bold"
 plt.rcParams["axes.titlesize"] = 18

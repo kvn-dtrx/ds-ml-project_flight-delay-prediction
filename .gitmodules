@@ -4,4 +4,3 @@
 [submodule "docs/presentation/vendor/my-reveal-js"]
 	path = docs/presentation/vendor/my-reveal-js
 	url = git@github.com:kvn-dtrx/my-reveal-js.git
-	
