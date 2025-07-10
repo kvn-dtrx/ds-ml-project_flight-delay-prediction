@@ -1,3 +1,5 @@
+# From template
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -128,15 +130,25 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
 # Mac Stuff
 .DS_Store
 
-# vscode Stuff
-.vscode
+# ---
 
-# Data 
-data/
+# Project-specific
 
-# CatBoost
-catboost_info/
+# Data directory
+data/*
+!data/.gitkeep
+
+# Plots directory
+**/plots/*
+!**/plots/.gitkeep
+
+# Models directory
+models/*
+!models/.gitkeep
+
+# Logs directory
+**/logs/*
+!**/logs/.gitkeep
