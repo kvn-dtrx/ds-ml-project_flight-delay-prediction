@@ -1,0 +1,7 @@
+project:
+  name: "DS ML Project: Flight Delay Prediction"
+  description: Analysis of the Tunisair Flight Delay Duration data set, including a predictive model using on a CatBoost regressor
+  github: https://github.com/kvn-dtrx/ds-ml-project_flight-delay-prediction
+  authors:
+    - name: Kvn Dtrx
+      mail: kvn.dtrx+git@protonmail.ch
