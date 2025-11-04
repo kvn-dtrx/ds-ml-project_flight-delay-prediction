@@ -14,8 +14,8 @@ As a baseline model, we choose a **linear regression** using weekday as predicto
 
 As the main ML model, we employ **CatBoost** that is suited for situations where the majority of features is categorical, resulting in a $\mathrm{RMSE}$ of approximately $96$.
 
-<!-- 
-NOTE: Correct LaTeX usage here would be `\operatorname` instead of `\mathrm`. 
+<!--
+NOTE: Correct LaTeX usage here would be `\operatorname` instead of `\mathrm`.
 But GitHub cannot render the former macro.
 -->
 
