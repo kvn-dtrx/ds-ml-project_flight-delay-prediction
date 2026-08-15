@@ -1,9 +1,14 @@
 # ---
-# description: Utility functions for notebooks.
+# description: >-
+#   Utility functions for notebooks
+# ---
+
 # ---
 
 import os
+
 import matplotlib.pyplot as plt
+
 from ipynb_utils.cfg import CFG
 
 
